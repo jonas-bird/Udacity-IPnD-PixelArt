@@ -18,12 +18,34 @@ const inputWidth = document.getElementById('inputWidth');
 // Event listener for the submit button
 const form = document.getElementById('sizePicker');
 form.addEventListener('submit', makeGrid);
+
+// Add event listener to table,
+const table = document.getElementById('pixelCanvas');
+table.addEventListener('click', colorPixel)
 // When size is submitted by the user, call makeGrid()
 
 function makeGrid(e) {
+  // remove previous grid
+  while (table.lastChild){
+    table.removeChild(table.lastChild);
+  }
+  // if there is some way for these values to change while the grid is being drawn
+  // I would rather not find out...
+  gridRows = inputWidth.value;
+  gridColumns = hightInput.value;
+
+  for(let rows=0; rows < gridRows; rows++){
+    let newRow = document.createElement('tr');
+    for(let columns=0; columns < gridColumns; columns++){
+      let newCell = document.createElement('td');
+      newRow.appendChild(newCell);
+    }
+    table.appendChild(newRow);
+  }
   e.preventDefault();
-  // printf testing
-  console.log(selectedColor);
-  console.log(gridRows);
-  console.log(gridColumns);
+}
+
+// Function to color the 'pixel' clicked by the user
+function colorPixel(e){
+  e.target.style.backgroundColor = selectedColor;
 }
