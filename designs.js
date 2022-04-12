@@ -47,5 +47,7 @@ function makeGrid(e) {
 
 // Function to color the 'pixel' clicked by the user
 function colorPixel(e){
-  e.target.style.backgroundColor = selectedColor;
+  if(e.target.nodeName === 'TD'){
+    e.target.style.backgroundColor = selectedColor;
+  }
 }
