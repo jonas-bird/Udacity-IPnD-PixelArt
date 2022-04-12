@@ -31,8 +31,8 @@ function makeGrid(e) {
   }
   // if there is some way for these values to change while the grid is being drawn
   // I would rather not find out...
-  gridRows = inputWidth.value;
-  gridColumns = hightInput.value;
+  gridRows = hightInput.value;
+  gridColumns = inputWidth.value;
 
   for(let rows=0; rows < gridRows; rows++){
     let newRow = document.createElement('tr');
